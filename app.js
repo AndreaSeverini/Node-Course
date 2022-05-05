@@ -6,8 +6,17 @@ const http = require("http");
 //request listener is a function that will be triggered
 //for any incoming requests
 const server = http.createServer((req, res) => {
-  console.log(req.url, req.method, req.headers);
-  //process.exit();
+  const url = req.url;
+  if (url === "/") {
+    res.write("<html>");
+    res.write("<head><title>Enter Message</title></head>");
+    res.write(
+      "<body><form action='/message' method='POST'><input type='text' name='message'><button type='submit'>Send</button></form></body>"
+    );
+    res.write("</html>");
+    //return to not continue outside the if
+    return res.end();
+  }
 
   res.setHeader("Content-Type", "text/html");
   //write some data
