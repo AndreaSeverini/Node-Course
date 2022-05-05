@@ -1,4 +1,5 @@
 const http = require("http");
+const fs = require("fs");
 
 // const rqListener = (req, res) => {
 // }
@@ -7,6 +8,7 @@ const http = require("http");
 //for any incoming requests
 const server = http.createServer((req, res) => {
   const url = req.url;
+  const method = req.method;
   if (url === "/") {
     res.write("<html>");
     res.write("<head><title>Enter Message</title></head>");
@@ -15,6 +17,22 @@ const server = http.createServer((req, res) => {
     );
     res.write("</html>");
     //return to not continue outside the if
+    return res.end();
+  }
+  if (url === "/message" && method === "POST") {
+    const body = [];
+    //listen to events
+    req.on("data", (chunk) => {
+      body.push(chunk);
+    });
+    req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      const message = parsedBody.split("=")[1];
+      fs.writeFileSync("message.txt", message);
+    });
+
+    res.statusCode = 302; //redirection
+    res.setHeader("Location", "/");
     return res.end();
   }
 
