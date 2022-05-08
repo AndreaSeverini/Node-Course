@@ -1,0 +1,24 @@
+{
+  "name": "nodecourse",
+  "version": "1.0.0",
+  "description": "Understanding node core",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaSeverini/Node-Course.git"
+  },
+  "author": "Daedevils",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreaSeverini/Node-Course/issues"
+  },
+  "homepage": "https://github.com/AndreaSeverini/Node-Course#readme",
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

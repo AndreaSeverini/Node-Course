@@ -1,2 +1,6 @@
 #files created
 message.txt
+
+#not required
+node_modules
+package-lock.json
